@@ -1,6 +1,6 @@
 {
   "name": "@madebyluque/action-discord-notifier",
-  "version": "1.2.0",
+  "version": "1.1.1",
   "description": "Use discord webhook to get notification about commits.",
   "main": "index.js",
   "scripts": {

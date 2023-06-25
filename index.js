@@ -4,7 +4,7 @@ const core = require('@actions/core')
 const github = require('@actions/github')
 
 const webhook = core.getInput('webhook')
-const descriptionText = core.getInput('message-description')
+const descriptionInput = core.getInput('message-description')
 
 if (!/https:\/\/discord(app|)\.com\/api\/webhooks\/\d+?\/.+/i.exec(webhook)) {
   core.setFailed('The given discord webhook url is invalid. Please ensure you give a **full** url that start with "https://discordapp.com/api/webhooks"')
@@ -25,15 +25,16 @@ const beforeSha = githubPayload.before
 const afterSha = githubPayload.after
 const compareUrl = `${githubPayload.repository.url}/compare/${beforeSha}...${afterSha}`
 
-const descriptionSha = `[[${shortSha(beforeSha)}...${shortSha(afterSha)}\]\`](${compareUrl})`
+const descriptionSha = `[[${shortSha(beforeSha)}...${shortSha(afterSha)}\]\](${compareUrl})`
 const descriptionCommits = `***Commits***\n${commits.join('\n')}`
+const descriptionText = `***Description***\n${descriptionInput}`
 
 const payload = {
   content: '',
   embeds: [
     {
       title: core.getInput('message-title') || 'Commits received',
-      description: `${descriptionSha}\n${descriptionText}\n${descriptionCommits}`
+      description: `${descriptionSha}\n\n${descriptionText}\n\n${descriptionCommits}`
     }
   ]
 }
