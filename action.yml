@@ -9,6 +9,8 @@ inputs:
     required: true
   message-title:
     description: Message title
+  message-description:
+    description: Message Message
 output:
   result:
     description: Webhook result

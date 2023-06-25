@@ -1,4 +1,5 @@
 # Discord Notifier
+This github action was originally written by [BinotaLIU](me@binota.org). I just forked it to enable users to add their own description messages.
 
 A GitHub Action to post message to discord using discord webhook
 
@@ -24,7 +25,9 @@ jobs:
       - uses: fateyan/action-discord-notifier@v1
         with:
           message-title: New Commits Pushed
+          message-description: Discord message description
           webhook: https://discordapp.com/api/webhooks/00000000000/secret
+
 ```
 
 
@@ -38,3 +41,4 @@ About Discord webhook, please see [this article on Discord Help Centre](https://
 |---|---|---|
 |webhook|✔️|A full webhook url. MUST NOT append `/github` at the end.|
 |message-title|️ |Custom embed message title. Optional.|
+|message-description|️ |Custom embed message description. Optional.|
