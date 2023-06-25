@@ -1,4 +1,5 @@
 # Discord Notifier
+This github action was originally written by [BinotaLIU](me@binota.org). I just forked it to enable users to add their own description messages.
 
 A GitHub Action to post message to discord using discord webhook
 
